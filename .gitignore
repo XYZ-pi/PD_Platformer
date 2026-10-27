@@ -1,0 +1,17 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]serSettings/
+
+# MemoryCaptures can get large and are usually only useful locally
+/[Mm]emoryCaptures/
+
+# Visual Studio cache/options directory
+.vs/
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
