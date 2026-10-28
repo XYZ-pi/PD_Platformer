@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy_Sideways.cs" />
     <Compile Include="Assets\Scripts\Health\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\Health\HealthCollectible.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
   </ItemGroup>

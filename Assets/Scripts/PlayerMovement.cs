@@ -25,6 +25,14 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpTimer;
     private bool jumpRequested;
 
+    private float knockbackTimer;
+
+    public void Knockback(Vector2 velocity, float duration = 0.25f)
+    {
+        knockbackTimer = duration;
+        body.linearVelocity = velocity;   // в Unity 6; в старых версиях body.velocity
+    }
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -36,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+            return; // пока идёт отброс, управление и перезапись скорости отключены
+        }
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -55,6 +69,16 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         wallJumpTimer += Time.fixedDeltaTime;
+
+        // Во время отброса не трогаем скорость
+        if (knockbackTimer > 0f)
+        {
+            body.gravityScale = normalGravity;
+            anim.SetBool("wallSlide", false);
+            jumpRequested = false;
+            return;
+        }
+
         bool sliding = false;
 
         if (wallJumpTimer > wallJumpLockTime)
