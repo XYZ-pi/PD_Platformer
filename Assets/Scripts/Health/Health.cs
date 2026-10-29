@@ -42,7 +42,6 @@ public class Health:MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    
 
     public void AddHealth(float _value)
     {

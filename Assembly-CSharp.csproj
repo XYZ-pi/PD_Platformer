@@ -65,10 +65,11 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.6.4f1\Editor\Data\BCLExtensions\TargetingPacks\netstandard2.1\analyzers\dotnet\roslyn4.0\cs\System.Text.Json.SourceGeneration.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Enemy_Sideways.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Enemy_Sideways.cs" />
     <Compile Include="Assets\Scripts\Health\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Health\HealthCollectible.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Fruits\Fruits_Collectible.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
   </ItemGroup>
   <ItemGroup>

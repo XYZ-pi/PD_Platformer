@@ -8,8 +8,8 @@ public class Enemy_Sideways : MonoBehaviour
     private bool movingLeft;
     private float leftEdge;
     private float rightEdge;
-    [SerializeField] private float knockbackX = 6;
-    [SerializeField] private float knockbackY = 4;
+    [SerializeField] private float knockbackX;
+    [SerializeField] private float knockbackY;
 
 
     private void Awake()
