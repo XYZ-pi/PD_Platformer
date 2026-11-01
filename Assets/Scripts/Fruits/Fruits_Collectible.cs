@@ -10,11 +10,11 @@ public class Fruits_Collectible:MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //LevelManager.Instance.AddFruit(value);
-            //gameObject.SetActive(false);
-           
-            Debug.Log("Собрала фрукт");
+            Level_Management.Instance.AddFruit(value);
             gameObject.SetActive(false);
+
+            //Debug.Log("Собрала фрукт");
+            //gameObject.SetActive(false);
         }
     }
 }
