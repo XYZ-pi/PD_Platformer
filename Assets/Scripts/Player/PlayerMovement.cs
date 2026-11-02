@@ -42,8 +42,14 @@ public class PlayerMovement : MonoBehaviour
         wallJumpTimer = wallJumpLockTime + 1f; // в начале игры блокировки нет
     }
 
+        
+    // остальное без изменений
     private void Update()
     {
+        if (Time.timeScale == 0f) return;
+
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+
         if (knockbackTimer > 0)
         {
             knockbackTimer -= Time.deltaTime;

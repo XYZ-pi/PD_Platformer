@@ -23,6 +23,8 @@ public class Level_Management:MonoBehaviour
     private bool finished;
 
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject pausePanel;
+    private bool paused;
 
     private void Awake()
     {
@@ -41,11 +43,20 @@ public class Level_Management:MonoBehaviour
 
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
+
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
     }
 
     private void Update()
     {
         if (finished) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (paused) Resume();
+            else Pause();
+        }
 
         timer += Time.deltaTime;
         if (timerText != null)
@@ -125,4 +136,30 @@ public class Level_Management:MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void Pause()
+    {
+        if (finished) return;
+        paused = true;
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        paused = false;
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void NextLevel()
+    {
+        int next = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (next < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(next);
+        else
+            SceneManager.LoadScene(0); // последний уровень пройден: вернуться в начало
+    }
+
 }
