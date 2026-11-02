@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Health\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Health\HealthCollectible.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Fruits\Fruits_Collectible.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
   </ItemGroup>
