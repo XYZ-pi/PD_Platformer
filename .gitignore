@@ -15,3 +15,5 @@
 *.user
 *.userprefs
 *.sln.docstates
+*.csproj
+*.sln
