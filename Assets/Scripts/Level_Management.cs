@@ -86,26 +86,35 @@ public class Level_Management:MonoBehaviour
     {
         finished = true;
 
+        string rating;
+        Color color;
+
+        if (timer <= greenTime)
+        {
+            rating = "Perfect!";
+            color = Color.green;
+        }
+        else if (timer <= yellowTime)
+        {
+            rating = "Good";
+            color = Color.yellow;
+        }
+        else
+        {
+            rating = "Not so good";
+            color = Color.red;
+        }
+
         if (resultTimeText != null)
-            resultTimeText.text = "Время: " + FormatTime(timer);
+        {
+            resultTimeText.text = "Time: " + FormatTime(timer);
+            resultTimeText.color = color;   // время красится в цвет оценки
+        }
 
         if (ratingText != null)
         {
-            if (timer <= greenTime)
-            {
-                ratingText.text = "Отлично!";
-                ratingText.color = Color.green;
-            }
-            else if (timer <= yellowTime)
-            {
-                ratingText.text = "Неплохо";
-                ratingText.color = Color.yellow;
-            }
-            else
-            {
-                ratingText.text = "Слишком долго";
-                ratingText.color = Color.red;
-            }
+            ratingText.text = rating;
+            ratingText.color = color;
         }
 
         if (winPanel != null)
@@ -162,4 +171,18 @@ public class Level_Management:MonoBehaviour
             SceneManager.LoadScene(0); // последний уровень пройден: вернуться в начало
     }
 
+    public void QuitGame()
+    {
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // в редакторе останавливает Play Mode
+    #else
+    Application.Quit();
+    #endif
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
 }
