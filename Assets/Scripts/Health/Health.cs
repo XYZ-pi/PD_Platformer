@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Health:MonoBehaviour {
     [SerializeField] private float startingHealth;
@@ -24,12 +23,18 @@ public class Health:MonoBehaviour {
         }
         else
         {
+            anim.SetBool("wallSlide", false);
+            anim.SetBool("run", false);
+            anim.ResetTrigger("hurt");
+            anim.ResetTrigger("jump");
+
             anim.SetTrigger("die");
             GetComponent<PlayerMovement>().enabled = false;
             GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             GetComponent<Rigidbody2D>().gravityScale = 0f;
             dead = true;
         }
+
     }
 
     private System.Collections.IEnumerator Invulnerability()
