@@ -5,7 +5,6 @@ public class HealthCollectible:MonoBehaviour
     [SerializeField] private float healthValue;
 
     [SerializeField] private AudioClip heartClip;
-    [SerializeField, Range(0f, 1f)] private float volume = 0.4f;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,7 +13,7 @@ public class HealthCollectible:MonoBehaviour
         {
             collision.GetComponent<Health>().AddHealth(healthValue);
 
-            SoundFX.Play(heartClip);
+            SoundFX.Play(heartClip, "collectible");
 
             gameObject.SetActive(false);
         }

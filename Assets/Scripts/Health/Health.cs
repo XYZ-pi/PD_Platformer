@@ -13,7 +13,6 @@ public class Health:MonoBehaviour {
     [SerializeField] private float iFramesDuration = 1f;
     private bool invulnerable;
 
-    [SerializeField, Range(0f, 1f)] private float volume = 0.4f;
 
 
     public void TakeDamage(float _damage)

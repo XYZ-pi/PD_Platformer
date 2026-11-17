@@ -36,6 +36,11 @@ public class MainMenu : MonoBehaviour
         if (audioMenuPanel != null) audioMenuPanel.SetActive(true);
     }
 
+    public void CloseAudioMenu()
+    {
+        if (audioMenuPanel != null) audioMenuPanel.SetActive(false);     // Выключаем панель аудио
+        if (settingsMenuPanel != null) settingsMenuPanel.SetActive(true); // Включаем настройки
+    }
 
     public void Quit()
     {

@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip stepClip;
     [SerializeField] private AudioClip slideClip;
     [SerializeField] private float stepInterval = 0.3f;
-    [SerializeField, Range(0f, 1f)] private float volume = 0.1f;
 
     private AudioSource slideSource;
     private float stepTimer;
@@ -98,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f)
             {
-                SoundFX.Play(stepClip, 0.5f);
+                SoundFX.Play(stepClip, "player", 0.5f);
                 stepTimer = stepInterval;
             }
         }
@@ -167,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
         {
             body.linearVelocity = new Vector2(body.linearVelocity.x, jumpForce);
             anim.SetTrigger("jump");
-            SoundFX.Play(jumpClip);
+            SoundFX.Play(jumpClip, "player");
         }
         else if (OnWall())
         {
@@ -180,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
             // Разворот лицом в сторону прыжка
             transform.localScale = new Vector3(jumpDirection * Mathf.Abs(startScale.x), startScale.y, startScale.z);
             anim.SetTrigger("jump");
-            SoundFX.Play(jumpClip);
+            SoundFX.Play(jumpClip, "player");
         }
     }
 
