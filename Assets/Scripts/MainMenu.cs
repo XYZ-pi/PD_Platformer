@@ -2,20 +2,44 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
+
 {
+    [SerializeField] private GameObject mainMenuPanel;      
+    [SerializeField] private GameObject settingsMenuPanel;
+    [SerializeField] private GameObject audioMenuPanel;
+
     private void Start()
     {
-        Time.timeScale = 1f; // на случай, если пришли из паузы
+        Time.timeScale = 1f; 
+        OpenMainMenu();
     }
 
     public void Play()
     {
-        SceneManager.LoadScene(1); // первый уровень
+        SceneManager.LoadScene(1); 
     }
+
+    public void OpenSettings()
+    {
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        if (settingsMenuPanel != null) settingsMenuPanel.SetActive(true);
+    }
+
+    public void OpenMainMenu()
+    {
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+        if (settingsMenuPanel != null) settingsMenuPanel.SetActive(false);
+    }
+    public void OpenAudioMenu()
+    {
+        if (settingsMenuPanel != null) settingsMenuPanel.SetActive(false);
+        if (audioMenuPanel != null) audioMenuPanel.SetActive(true);
+    }
+
 
     public void Quit()
     {
         Application.Quit();
-        Debug.Log("Quit"); // в редакторе игра не закрывается, это нормально
+        Debug.Log("Quit"); 
     }
 }
