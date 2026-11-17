@@ -31,6 +31,8 @@ public class Level_Management:MonoBehaviour
         Instance = this;
         Time.timeScale = 1f;
 
+        MusicPlayer.SetDucked(false);
+
         // —читаем все фрукты на сцене автоматически
         total = 0;
         foreach (var c in FindObjectsByType<Fruits_Collectible>())
@@ -121,6 +123,7 @@ public class Level_Management:MonoBehaviour
             winPanel.SetActive(true);
 
         Time.timeScale = 0f;
+        MusicPlayer.SetDucked(true);
     }
 
     private string FormatTime(float t)
@@ -139,6 +142,7 @@ public class Level_Management:MonoBehaviour
             gameOverPanel.SetActive(true);
 
         Time.timeScale = 0f;
+        MusicPlayer.SetDucked(true);
     }
 
     public void Restart()
@@ -152,6 +156,8 @@ public class Level_Management:MonoBehaviour
         paused = true;
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
+        MusicPlayer.SetDucked(true);
+
     }
 
     public void Resume()
@@ -159,6 +165,7 @@ public class Level_Management:MonoBehaviour
         paused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        MusicPlayer.SetDucked(false);
     }
 
     public void NextLevel()

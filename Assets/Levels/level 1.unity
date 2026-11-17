@@ -4948,6 +4948,7 @@ GameObject:
   - component: {fileID: 342690943}
   - component: {fileID: 342690942}
   - component: {fileID: 342690941}
+  - component: {fileID: 342690945}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -5044,6 +5045,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &342690945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342690940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b1b69b0ec28c54ca714b0797d0fff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoButtonSounds
+  clickClip: {fileID: 8300000, guid: 52dfdcc559f04ac4bb82cadcfc25888a, type: 3}
 --- !u!1 &343658147
 GameObject:
   m_ObjectHideFlags: 0
@@ -9967,6 +9981,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicPlayer
   music: {fileID: 8300000, guid: 6724ca206f2152d45b30603376db2da2, type: 3}
   volume: 0.05
+  duckFactor: 0.5
+  uiVolume: 1
 --- !u!1 &725554896
 GameObject:
   m_ObjectHideFlags: 0
@@ -24423,7 +24439,6 @@ MonoBehaviour:
   stepClip: {fileID: 0}
   slideClip: {fileID: 0}
   stepInterval: 0.3
-  volume: 0.1
 --- !u!95 &1885892882
 Animator:
   serializedVersion: 7
@@ -24463,7 +24478,6 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 5ebfe70dd97c3164a9c712b4535deb78, type: 3}
   invulnerableAlpha: 0.5
   iFramesDuration: 1
-  volume: 0.1
 --- !u!1 &1891838900
 GameObject:
   m_ObjectHideFlags: 0
