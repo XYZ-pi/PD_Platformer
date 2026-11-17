@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthCollectible
   healthValue: 1
+  heartClip: {fileID: 8300000, guid: 2d5a18b5a2702234dbe2ed33cbbf07f5, type: 3}
+  volume: 0.1
 --- !u!61 &8490800952720327720
 BoxCollider2D:
   m_ObjectHideFlags: 0

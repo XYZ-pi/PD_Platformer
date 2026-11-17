@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fruits_Collectible
   value: 1
+  collectClip: {fileID: 8300000, guid: 02b71040f58222e4f8cfed9aace0780e, type: 3}
+  volume: 0.1
 --- !u!95 &6872189111003054531
 Animator:
   serializedVersion: 7

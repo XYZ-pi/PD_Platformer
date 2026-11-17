@@ -9921,6 +9921,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &718541249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718541251}
+  - component: {fileID: 718541252}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718541251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718541249}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.04436, y: -0.58128, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &718541252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718541249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0049e420e6476a429afedb04c9c9315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicPlayer
+  music: {fileID: 8300000, guid: 6724ca206f2152d45b30603376db2da2, type: 3}
+  volume: 0.05
 --- !u!1 &725554896
 GameObject:
   m_ObjectHideFlags: 0
@@ -24373,6 +24419,11 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 768
+  jumpClip: {fileID: 8300000, guid: db3445650fcb41647b53ee1f4445c485, type: 3}
+  stepClip: {fileID: 0}
+  slideClip: {fileID: 0}
+  stepInterval: 0.3
+  volume: 0.1
 --- !u!95 &1885892882
 Animator:
   serializedVersion: 7
@@ -24408,8 +24459,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   startingHealth: 3
+  hurtClip: {fileID: 8300000, guid: e38fdf261ca31da41ab062509c6b1f53, type: 3}
+  deathClip: {fileID: 8300000, guid: 5ebfe70dd97c3164a9c712b4535deb78, type: 3}
   invulnerableAlpha: 0.5
   iFramesDuration: 1
+  volume: 0.1
 --- !u!1 &1891838900
 GameObject:
   m_ObjectHideFlags: 0
@@ -29106,3 +29160,4 @@ SceneRoots:
   - {fileID: 1506142278}
   - {fileID: 311918509}
   - {fileID: 342690944}
+  - {fileID: 718541251}

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Health:MonoBehaviour {
     [SerializeField] private float startingHealth;
+    [SerializeField] private AudioClip hurtClip;
+    [SerializeField] private AudioClip deathClip;
+
     public float currentHealth {get; private set;}
     private Animator anim;
     private SpriteRenderer spriteRend;
@@ -9,6 +12,9 @@ public class Health:MonoBehaviour {
     private bool dead;
     [SerializeField] private float iFramesDuration = 1f;
     private bool invulnerable;
+
+    [SerializeField, Range(0f, 1f)] private float volume = 0.4f;
+
 
     public void TakeDamage(float _damage)
     {
@@ -20,6 +26,7 @@ public class Health:MonoBehaviour {
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
+            SoundFX.Play(hurtClip);
         }
         else
         {
@@ -33,6 +40,8 @@ public class Health:MonoBehaviour {
             GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             GetComponent<Rigidbody2D>().gravityScale = 0f;
             dead = true;
+
+            SoundFX.Play(deathClip);
         }
 
     }

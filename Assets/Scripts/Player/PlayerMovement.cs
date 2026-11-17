@@ -27,6 +27,16 @@ public class PlayerMovement : MonoBehaviour
 
     private float knockbackTimer;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip stepClip;
+    [SerializeField] private AudioClip slideClip;
+    [SerializeField] private float stepInterval = 0.3f;
+    [SerializeField, Range(0f, 1f)] private float volume = 0.1f;
+
+    private AudioSource slideSource;
+    private float stepTimer;
+
     public void Knockback(Vector2 velocity, float duration = 0.25f)
     {
         knockbackTimer = duration;
@@ -40,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         startScale = transform.localScale;
         wallJumpTimer = wallJumpLockTime + 1f; // в начале игры блокировки нет
+
+        slideSource = gameObject.AddComponent<AudioSource>();
+        slideSource.clip = slideClip;
+        slideSource.loop = true;
+        slideSource.volume = 0.1f;
+        slideSource.playOnAwake = false;
     }
 
         
@@ -70,6 +86,23 @@ public class PlayerMovement : MonoBehaviour
         // Параметры Animator
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", IsGrounded());
+
+        if (Time.timeScale == 0f)
+        {
+            slideSource.Stop();
+            return;
+        }
+
+        if (horizontalInput != 0 && IsGrounded())
+        {
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f)
+            {
+                SoundFX.Play(stepClip, 0.5f);
+                stepTimer = stepInterval;
+            }
+        }
+        else stepTimer = 0f;
     }
 
     private void FixedUpdate()
@@ -82,8 +115,11 @@ public class PlayerMovement : MonoBehaviour
             body.gravityScale = normalGravity;
             anim.SetBool("wallSlide", false);
             jumpRequested = false;
+            slideSource.Stop();
             return;
         }
+
+
 
         bool sliding = false;
 
@@ -119,6 +155,9 @@ public class PlayerMovement : MonoBehaviour
         body.gravityScale = sliding ? 0f : normalGravity;
         anim.SetBool("wallSlide", sliding);
 
+        if (sliding && !slideSource.isPlaying) slideSource.Play();
+        else if (!sliding && slideSource.isPlaying) slideSource.Stop();
+
         jumpRequested = false;
     }
 
@@ -128,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
         {
             body.linearVelocity = new Vector2(body.linearVelocity.x, jumpForce);
             anim.SetTrigger("jump");
+            SoundFX.Play(jumpClip);
         }
         else if (OnWall())
         {
@@ -140,6 +180,7 @@ public class PlayerMovement : MonoBehaviour
             // Разворот лицом в сторону прыжка
             transform.localScale = new Vector3(jumpDirection * Mathf.Abs(startScale.x), startScale.y, startScale.z);
             anim.SetTrigger("jump");
+            SoundFX.Play(jumpClip);
         }
     }
 
@@ -160,6 +201,11 @@ public class PlayerMovement : MonoBehaviour
     private bool OnWall()
     {
         return GetWallHit().collider != null;
+    }
+
+    private void OnDisable()
+    {
+        if (slideSource != null) slideSource.Stop();
     }
 }
 
