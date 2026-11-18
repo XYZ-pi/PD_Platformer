@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;      
     [SerializeField] private GameObject settingsMenuPanel;
     [SerializeField] private GameObject audioMenuPanel;
+    [SerializeField] private GameObject controlsMenuPanel;
 
     private void Start()
     {
@@ -39,6 +40,18 @@ public class MainMenu : MonoBehaviour
     public void CloseAudioMenu()
     {
         if (audioMenuPanel != null) audioMenuPanel.SetActive(false);     // Выключаем панель аудио
+        if (settingsMenuPanel != null) settingsMenuPanel.SetActive(true); // Включаем настройки
+    }
+
+    public void OpenControlsMenu()
+    {
+        if (settingsMenuPanel != null) settingsMenuPanel.SetActive(false);
+        if (controlsMenuPanel != null) controlsMenuPanel.SetActive(true);
+    }
+
+    public void CloseControlsMenu()
+    {
+        if (controlsMenuPanel != null) controlsMenuPanel.SetActive(false);     // Выключаем панель аудио
         if (settingsMenuPanel != null) settingsMenuPanel.SetActive(true); // Включаем настройки
     }
 
